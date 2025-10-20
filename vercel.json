@@ -1,4 +1,17 @@
 {
-  "builds": [{ "src": "index.html", "use": "@vercel/static" }],
-  "routes": [{ "src": "/(.*)", "dest": "/index.html" }]
+  "routes": [
+    {
+      "src": "/san-executor-v1.1.exe",
+      "headers": {
+        "Content-Type": "application/octet-stream",
+        "Content-Disposition": "attachment; filename=\"san-executor-v1.1.exe\""
+      }
+    },
+    {
+      "src": "/logo.png",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000"
+      }
+    }
+  ]
 }
