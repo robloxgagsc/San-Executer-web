@@ -1,12 +1,17 @@
 {
-  "routes": [
-    {
-      "src": "/san-executor-v1.1.exe",
-      "dest": "/san-executor-v1.1.exe",
-      "headers": {
-        "Content-Type": "application/octet-stream",
-        "Content-Disposition": "attachment; filename=san-executor-v1.1.exe"
-      }
-    }
-  ]
+  "name": "san-executor-site",
+  "version": "1.0.0",
+  "description": "Official site for San Executor v1.1 – Fast scripting tool with black theme and downloads.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "executor",
+    "scripting",
+    "roblox",
+    "automation"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT"
 }
