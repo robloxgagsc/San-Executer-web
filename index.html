@@ -33,6 +33,17 @@
             height: 40px;
             border-radius: 50%;
             margin-right: 10px;
+            background-color: #ff6b6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            object-fit: cover; /* For images */
+        }
+        .logo.fallback {
+            background-color: #ff6b6b; /* Red circle fallback */
         }
         header h1 {
             margin: 0;
@@ -171,7 +182,8 @@
 <body>
     <header>
         <div class="logo-section">
-            <img src="/logo.png" alt="San Executor Logo" class="logo">
+            <img src="/logo.png" alt="San Executor Logo" class="logo" id="logo-img" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';">
+            <div class="logo fallback" id="logo-fallback" style="display: none;">SE</div>
             <h1>San Executor</h1>
         </div>
         <a href="https://discord.gg/your-invite-here" class="discord-btn" target="_blank">Join Discord</a>
@@ -186,7 +198,7 @@
     <section id="home" class="hero">
         <h2>Unlock the Power of Scripting</h2>
         <p>San Executor v1.1 is the ultimate tool for advanced scripting and automation. Fast, secure, and easy to use – perfect for developers and enthusiasts alike.</p>
-        <a href="/san-executor-v1.1.exe" class="download-btn" download>Download!</a>
+        <a href="/san-executor-v1.1.exe" class="download-btn" download id="main-download">Download!</a>
     </section>
 
     <section id="features">
@@ -236,7 +248,7 @@
     </footer>
 
     <script>
-        // Simple smooth scrolling for nav links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -246,12 +258,17 @@
             });
         });
 
-        // Optional: Fallback alert if download fails (e.g., file not found)
+        // Download fallback check (alert if likely failed)
         document.querySelectorAll('a[download]').forEach(link => {
             link.addEventListener('click', function(e) {
-                if (this.href.includes('san-executor-v1.1.exe')) {
-                    // Could add fetch check here if you want, but simple for now
-                }
+                setTimeout(() => {
+                    // Simple check: if user downloads HTML-like file, warn (you can expand with fetch)
+                    if (confirm('Did it download the .exe? If it downloaded HTML, check public/ folder!')) {
+                        // Good
+                    } else {
+                        alert('Upload san-executor-v1.1.exe to public/ and push to GitHub!');
+                    }
+                }, 1000);
             });
         });
     </script>
